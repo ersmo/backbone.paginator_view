@@ -45,6 +45,8 @@ class Backbone.PaginatorView extends Backbone.View
       collection: @collection
       dictionary: @dictionary
       lang: @options.lang
+      formatNumber: (number) ->
+        number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1'+',')
     this
 
   gotoNumber: (e) =>

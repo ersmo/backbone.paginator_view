@@ -10,7 +10,6 @@
     "tests"
   ],
   "dependencies": {
-    "backbone": "~1.0.0",
-    "numeral": "~1.4.5"
+    "backbone": "~1.0.0"
   }
 }

@@ -1,7 +1,7 @@
 .pagination.pagination-small
 
-  span #{dictionary.total[lang]} #{numeral(collection.totalRecords).format('0,0')} #{dictionary.records[lang]}, #{collection.totalPages} #{dictionary.pages[lang]} &nbsp;
-  
+  span #{dictionary.total[lang]} #{formatNumber(collection.totalRecords)} #{dictionary.records[lang]}, #{collection.totalPages} #{dictionary.pages[lang]} &nbsp;
+
   if collection.totalPages > 1
     ul
       if collection.currentPage == 1
@@ -12,7 +12,7 @@
       else
         li
           a.first= dictionary.firstPage[lang]
-        li 
+        li
           a.previous= dictionary.previousPage[lang]
 
       - var startPage = collection.currentPage - collection.pagesInRange
@@ -36,5 +36,5 @@
       else
         li
           a.next= dictionary.nextPage[lang]
-        li 
+        li
           a.last= dictionary.lastPage[lang]
