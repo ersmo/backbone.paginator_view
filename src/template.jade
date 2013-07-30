@@ -1,0 +1,40 @@
+.pagination.pagination-small
+
+  span #{dictionary.total[lang]} #{numeral(collection.totalRecords).format('0,0')} #{dictionary.records[lang]}, #{collection.totalPages} #{dictionary.pages[lang]} &nbsp;
+  
+  if collection.totalPages > 1
+    ul
+      if collection.currentPage == 1
+        li.disabled
+          a.first= dictionary.firstPage[lang]
+        li.disabled
+          a.previous= dictionary.previousPage[lang]
+      else
+        li
+          a.first= dictionary.firstPage[lang]
+        li 
+          a.previous= dictionary.previousPage[lang]
+
+      - var startPage = collection.currentPage - collection.pagesInRange
+      - var endPage = collection.currentPage + collection.pagesInRange
+      - startPage = startPage > 0 ? startPage : 1
+      - endPage = endPage <= collection.totalPages ? endPage : collection.totalPages
+
+      - for(var num = startPage; num <= endPage; num++)
+        if collection.currentPage == num
+          li.active
+            a.number= num
+        else
+          li
+            a.number=num
+
+      if collection.currentPage == collection.totalPages
+        li.disabled
+          a.next= dictionary.nextPage[lang]
+        li.disabled
+          a.last= dictionary.lastPage[lang]
+      else
+        li
+          a.next= dictionary.nextPage[lang]
+        li 
+          a.last= dictionary.lastPage[lang]

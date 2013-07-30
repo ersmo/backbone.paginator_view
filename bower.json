@@ -1,0 +1,16 @@
+{
+  "name": "backbone.paginator_view",
+  "version": "0.0.0",
+  "main": "dist/backbone.paginator_view.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "numeral": "~1.4.5"
+  }
+}
