@@ -1,7 +1,7 @@
 
 class Backbone.PaginatorView extends Backbone.View
 
-  template: window.JST.paginator
+  template: JST.paginator
 
   events:
     'click .pagination a.number': 'gotoNumber'

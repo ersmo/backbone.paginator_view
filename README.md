@@ -21,6 +21,5 @@ defaults:
 
 # License
 
-The MIT License
-
-Copyright (c) 2013 Jarvis A.I. <kinua1230@gmail.com>
+Copyright (c) 2013 Jarvis Ao Ieong  
+Licensed under the MIT license.

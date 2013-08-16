@@ -1,6 +1,6 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["paginator"] = function anonymous(locals) {
+this["JST"]["chosen"] = function anonymous(locals) {
 var buf = [];
 var locals_ = (locals || {}),dictionary = locals_.dictionary,lang = locals_.lang,formatNumber = locals_.formatNumber,collection = locals_.collection;buf.push("<div class=\"pagination pagination-small\"><span>" + (jade.escape((jade.interp = dictionary.total[lang]) == null ? '' : jade.interp)) + " " + (jade.escape((jade.interp = formatNumber(collection.totalRecords)) == null ? '' : jade.interp)) + " " + (jade.escape((jade.interp = dictionary.records[lang]) == null ? '' : jade.interp)) + ", " + (jade.escape((jade.interp = collection.totalPages) == null ? '' : jade.interp)) + " " + (jade.escape((jade.interp = dictionary.pages[lang]) == null ? '' : jade.interp)) + " &nbsp;</span>");
 if ( collection.totalPages > 1)
@@ -63,7 +63,7 @@ buf.push("</div>");;return buf.join("");
       return _ref;
     }
 
-    PaginatorView.prototype.template = window.JST.paginator;
+    PaginatorView.prototype.template = JST.paginator;
 
     PaginatorView.prototype.events = {
       'click .pagination a.number': 'gotoNumber',
