@@ -39,7 +39,7 @@ module.exports = (grunt) ->
           client: true
           compileDebug: false
           processName: (filename) ->
-            'chosen'
+            'paginator'
         files:
           'lib/template.js': 'src/template.jade'
 
