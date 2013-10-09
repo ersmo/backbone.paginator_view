@@ -38,7 +38,7 @@ class Backbone.PaginatorView extends Backbone.View
 
   initialize: =>
     @options = _.defaults @options, @defaults
-    @listenTo @collection, 'reset sync', @render
+    @listenTo @collection, 'reset', @render
 
   render: =>
     @$el.html @template
@@ -79,4 +79,5 @@ class Backbone.PaginatorView extends Backbone.View
     e.preventDefault()
     if $(e.currentTarget).parent().attr('class') != 'disabled'
       @collection.currentPage = page
-      @collection.goTo page
+      @collection.goTo page,
+        reset: true

@@ -110,7 +110,7 @@ buf.push("</div>");;return buf.join("");
 
     PaginatorView.prototype.initialize = function() {
       this.options = _.defaults(this.options, this.defaults);
-      return this.listenTo(this.collection, 'reset sync', this.render);
+      return this.listenTo(this.collection, 'reset', this.render);
     };
 
     PaginatorView.prototype.render = function() {
@@ -167,7 +167,9 @@ buf.push("</div>");;return buf.join("");
       e.preventDefault();
       if ($(e.currentTarget).parent().attr('class') !== 'disabled') {
         this.collection.currentPage = page;
-        return this.collection.goTo(page);
+        return this.collection.goTo(page, {
+          reset: true
+        });
       }
     };
 
