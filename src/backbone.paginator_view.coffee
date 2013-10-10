@@ -38,7 +38,7 @@ class Backbone.PaginatorView extends Backbone.View
 
   initialize: =>
     @options = _.defaults @options, @defaults
-    @listenTo @collection, 'reset', @render
+    @listenTo @collection, 'reset sync', @render
 
   render: =>
     @$el.html @template
