@@ -1,6 +1,6 @@
 {
   "name": "backbone.paginator_view",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "dist/backbone.paginator_view.js",
   "ignore": [
     "**/.*",

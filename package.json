@@ -1,6 +1,6 @@
 {
   "name": "backbone.paginator_view",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "backbone.paginator_view driven by backbone collection",
   "author": {
     "name": "Jarvis Ao Ieong",
