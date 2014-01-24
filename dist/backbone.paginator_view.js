@@ -37,7 +37,7 @@ else
 {
 buf.push("<li><a class=\"next\">" + (jade.escape(null == (jade.interp = dictionary.nextPage[lang]) ? "" : jade.interp)) + "</a></li><li><a class=\"last\">" + (jade.escape(null == (jade.interp = dictionary.lastPage[lang]) ? "" : jade.interp)) + "</a></li>");
 }
-buf.push("</ul>");
+buf.push("<li>&nbsp;<div class=\"input-append\"><input" + (jade.attrs({ 'type':('text'), 'placeholder':(dictionary.page[lang]), 'style':("width: 35px"), "class": [('page-target')] }, {"type":true,"placeholder":true,"style":true})) + "/><button class=\"btn go\">" + (jade.escape(null == (jade.interp = dictionary.go[lang]) ? "" : jade.interp)) + "</button></div></li></ul>");
 }
 buf.push("</div>");;return buf.join("");
 };
@@ -51,6 +51,8 @@ buf.push("</div>");;return buf.join("");
     __extends(PaginatorView, _super);
 
     function PaginatorView() {
+      this.pressEnter = __bind(this.pressEnter, this);
+      this.go = __bind(this.go, this);
       this.gotoPage = __bind(this.gotoPage, this);
       this.gotoNextPage = __bind(this.gotoNextPage, this);
       this.gotoPreviousPage = __bind(this.gotoPreviousPage, this);
@@ -70,7 +72,9 @@ buf.push("</div>");;return buf.join("");
       'click .pagination a.first': 'gotoFirstPage',
       'click .pagination a.last': 'gotoLastPage',
       'click .pagination a.previous': 'gotoPreviousPage',
-      'click .pagination a.next': 'gotoNextPage'
+      'click .pagination a.next': 'gotoNextPage',
+      'click .go': 'go',
+      'keyup .page-target': 'pressEnter'
     };
 
     PaginatorView.prototype.defaults = {
@@ -80,31 +84,48 @@ buf.push("</div>");;return buf.join("");
     PaginatorView.prototype.dictionary = {
       total: {
         en: 'Total',
+        tw: '共',
         cn: '共'
       },
       records: {
         en: 'records',
-        cn: '條記錄'
+        tw: '條記錄',
+        cn: '条记录'
       },
       pages: {
         en: 'pages',
-        cn: '頁'
+        tw: '頁',
+        cn: '页'
       },
       firstPage: {
         en: 'First',
-        cn: '首頁'
+        tw: '首頁',
+        cn: '首页'
       },
       previousPage: {
         en: 'Prev',
-        cn: '上頁'
+        tw: '上頁',
+        cn: '上页'
       },
       nextPage: {
         en: 'Next',
-        cn: '下頁'
+        tw: '下頁',
+        cn: '下页'
       },
       lastPage: {
         en: 'Last',
-        cn: '尾頁'
+        tw: '尾頁',
+        cn: '尾页'
+      },
+      page: {
+        en: 'Page',
+        tw: '頁碼',
+        cn: '页码'
+      },
+      go: {
+        en: 'go',
+        tw: '轉到',
+        cn: '转到'
       }
     };
 
@@ -171,6 +192,25 @@ buf.push("</div>");;return buf.join("");
           reset: true
         });
       }
+    };
+
+    PaginatorView.prototype.go = function() {
+      var page;
+      page = this.$('.page-target').val();
+      if (!page) {
+        return;
+      }
+      this.collection.currentPage = page;
+      return this.collection.goTo(page, {
+        reset: true
+      });
+    };
+
+    PaginatorView.prototype.pressEnter = function(e) {
+      if (e.which !== 13) {
+        return;
+      }
+      return this.go();
     };
 
     return PaginatorView;

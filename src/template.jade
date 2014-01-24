@@ -38,3 +38,9 @@
           a.next= dictionary.nextPage[lang]
         li
           a.last= dictionary.lastPage[lang]
+
+      li
+        | &nbsp;
+        .input-append
+          input.page-target(type='text', placeholder=dictionary.page[lang], style="width: 35px")
+          button.btn.go= dictionary.go[lang]

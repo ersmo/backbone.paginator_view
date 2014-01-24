@@ -9,6 +9,8 @@ class Backbone.PaginatorView extends Backbone.View
     'click .pagination a.last': 'gotoLastPage'
     'click .pagination a.previous': 'gotoPreviousPage'
     'click .pagination a.next': 'gotoNextPage'
+    'click .go': 'go'
+    'keyup .page-target': 'pressEnter'
 
   defaults:
     lang: 'en'
@@ -16,25 +18,40 @@ class Backbone.PaginatorView extends Backbone.View
   dictionary:
     total:
       en: 'Total'
+      tw: '共'
       cn: '共'
     records:
       en: 'records'
-      cn: '條記錄'
+      tw: '條記錄'
+      cn: '条记录'
     pages:
       en: 'pages'
-      cn: '頁'
+      tw: '頁'
+      cn: '页'
     firstPage:
       en: 'First'
-      cn: '首頁'
+      tw: '首頁'
+      cn: '首页'
     previousPage:
       en: 'Prev'
-      cn: '上頁'
+      tw: '上頁'
+      cn: '上页'
     nextPage:
       en: 'Next'
-      cn: '下頁'
+      tw: '下頁'
+      cn: '下页'
     lastPage:
       en: 'Last'
-      cn: '尾頁'
+      tw: '尾頁'
+      cn: '尾页'
+    page:
+      en: 'Page'
+      tw: '頁碼'
+      cn: '页码'
+    go:
+      en: 'go'
+      tw: '轉到'
+      cn: '转到'
 
   initialize: =>
     @options = _.defaults @options, @defaults
@@ -81,3 +98,14 @@ class Backbone.PaginatorView extends Backbone.View
       @collection.currentPage = page
       @collection.goTo page,
         reset: true
+
+  go: =>
+    page = @$('.page-target').val()
+    return unless page
+    @collection.currentPage = page
+    @collection.goTo page,
+      reset: true
+
+  pressEnter: (e) =>
+    return unless e.which is 13
+    @go()
